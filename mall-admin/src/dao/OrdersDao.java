@@ -84,18 +84,8 @@ public class OrdersDao {
 		Connection conn = dbUtil.getConnection();
 		String sql = "update orders set orders_state=? where orders_id = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		// stmt.setString(1, orders.getOrdersState());
-		if(orders.getOrdersState().equals("결제완료")) {
-			stmt.setString(1, "결제완료");
-		} else if(orders.getOrdersState().equals("배송준비중")) {
-			stmt.setString(1, "배송준비중");
-		} else if(orders.getOrdersState().equals("배송완료")) {
-			stmt.setString(1, "배송완료");
-		} else if(orders.getOrdersState().equals("주문취소")) {
-			stmt.setString(1, "주문취소");
-		}
+		stmt.setString(1, orders.getOrdersState());
 		stmt.setInt(2, orders.getOrdersId());
-		
 		stmt.executeUpdate();
 		
 		conn.close();

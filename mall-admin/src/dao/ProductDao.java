@@ -75,11 +75,7 @@ public void updateProductSoldout(int productId, String productSoldout) throws Ex
 		stmt.setString(1, product.getProductName());
 		stmt.setInt(2, product.getProductPrice());
 		stmt.setString(3, product.getProductContent());
-		if(product.getProductSoldout().equals("Y")) {
-			stmt.setNString(4, "N");
-		} else {
-			stmt.setString(4, "Y");
-		}
+		stmt.setString(4, product.getProductSoldout());
 		stmt.setInt(5, product.getProductId());
 		stmt.executeLargeUpdate();
 		
